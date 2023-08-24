@@ -11,8 +11,8 @@ export const LayoutProvider = ({ children }: { children: React.ReactNode }) => {
           className={` flex min-h-[100vh] flex-col justify-between bg-white `}
         >
           <Header />
-          <div className="flex px-5 py-4 sm:px-6 lg:px-28">
-            <div className="gro container mx-auto max-w-7xl ">{children}</div>
+          <div className="flex py-4 border">
+            <div className="w-full">{children}</div>
           </div>
           <Footer />
         </div>

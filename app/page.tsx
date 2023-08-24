@@ -12,7 +12,7 @@ const HomePage = async () => {
   console.log("user data", data);
 
   return (
-    <div>
+    <div className="border w-full mx-auto">
       <MyHomes />
     </div>
   );
