@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { ClientProvider } from "@/utils/trpc-provider";
 import { LayoutProvider } from "./LayoutProvider";
 import GoogleAnalytics from "~/components/GoogleAnalytics";
-import '~/styles/animations.css'
+import "~/styles/animations.css";
 
 export default function RootLayout({
   // Layouts must accept a children prop.
@@ -21,6 +21,8 @@ export default function RootLayout({
             <GoogleAnalytics ga_id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
           ) : null}
           <LayoutProvider>{children}</LayoutProvider>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+          {/* <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>; */}
           <Analytics />
         </body>
       </html>
@@ -52,7 +54,7 @@ export const metadata: Metadata = {
     "solidity",
     "rust",
     "code",
-    "programming"
+    "programming",
   ],
   alternates: {
     canonical: "https://collinsruto.netlify.app",
@@ -120,4 +122,3 @@ export const metadata: Metadata = {
   },
   robots: {},
 };
-

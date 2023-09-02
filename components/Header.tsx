@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import "~/styles/globals.css";
-import ThemeToogle from "./ThemeToogle";
 import localFont from "@next/font/local";
 
 const logoFont = localFont({
@@ -17,7 +16,7 @@ function Header() {
   const currentRoute = usePathname();
 
   return (
-    <div className="  sticky top-0 z-40 bg-gray-100 px-5 py-2 text-black bg-blend-darken shadow-lg dark:bg-slate-900 sm:px-6 lg:px-28">
+    <div className="  rdark:bg-slate-900 sticky top-0 z-40 bg-gray-100 py-2 text-black bg-blend-darken shadow-lg">
       <div className="container mx-auto max-w-7xl">
         <nav className="flex items-center justify-between">
           <div className="flex w-full items-center justify-between py-1.5 md:hidden">
@@ -30,9 +29,9 @@ function Header() {
                 className="h-11 w-11"
               />
               <h1
-                className={`${logoFont.className} ml-2 text-lg dark:text-white  `}
+                className={`${logoFont.className} rdark:text-white ml-2 text-lg  `}
               >
-                RUTO COLLINS
+                RUTO 
               </h1>
             </Link>
             <div
@@ -53,24 +52,24 @@ function Header() {
             <div className="container mx-auto flex items-center justify-between">
               <Link href="/" className="flex cursor-pointer items-center">
                 <Image
-                  width={128}
+                  width={408}
                   height={128}
-                  src="/c-bg-y.png"
+                  src="/buyit-logo.png"
                   alt="Collins"
-                  className="mr-2 h-12 w-12"
+                  className="mr-2 h-14 w-32"
                   loading="eager"
                 />
                 <span
-                  className={`${logoFont.className} ml-1 text-2xl dark:text-white md:ml-2`}
+                  className={`${logoFont.className} rdark:text-white ml-1 text-2xl md:ml-2`}
                 >
-                  RUTO COLLINS
+                  
                 </span>
               </Link>
               <div className="">
-                <nav className="w-full text-gray-700 dark:text-gray-300">
+                <nav className="rdark:text-gray-300 w-full text-gray-700">
                   <ul className="flex items-center space-x-4 text-sm font-semibold md:text-lg lg:space-x-8">
                     <li>
-                      <Link
+                      {/* <Link
                         href={`/`}
                         className={` cursor-pointer items-center border-b-2 align-middle transition duration-200 ease-in-out hover:text-blue-600 ${
                           currentRoute === "/"
@@ -78,79 +77,88 @@ function Header() {
                             : "border-transparent"
                         }`}
                       >
-                        <span className="rounded">HOME</span>
-                      </Link>
-                    </li>
-
-                    <li>
-                      <Link
-                        href={`/blogs`}
-                        className={` cursor-pointer items-center border-b-2  align-middle transition duration-200 ease-in-out hover:text-blue-600 ${
-                          currentRoute?.substring(0, 6) === "/blogs"
-                            ? "  border-orange-500"
-                            : "border-transparent"
-                        }`}
-                      >
-                        <span className="rounded">BLOGS</span>
-                      </Link>
+                        <span className="rounded">H</span>
+                      </Link> */}
                     </li>
                     <li>
-                      <Link
-                        href={`/projects`}
-                        className={` cursor-pointer items-center border-b-2 align-middle transition duration-200 ease-in-out hover:text-blue-600 ${
-                          currentRoute === "/projects"
-                            ? " border-orange-500"
-                            : "border-transparent"
-                        }`}
+                      <button
+                        id="dropdownHoverButton"
+                        datadropdown-toggle="dropdownHover"
+                        datadropdown-trigger="hover"
+                        className="font-bold  inline-flex items-center px-5 py-2.5 text-center text-black  focus:outline-none focus:ring-4 "
+                        type="button"
                       >
-                        <span className="rounded">PROJECTS</span>
-                      </Link>
+                        SHOP BY CATEGORIES{" "}
+                        <svg
+                          className="ml-2.5 h-2.5 w-2.5"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 10 6"
+                        >
+                          <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="m1 1 4 4 4-4"
+                          />
+                        </svg>
+                      </button>
+                      <div
+                        id="dropdownHover"
+                        className="z-10 hidden w-44 divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700"
+                      >
+                        <ul
+                          className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                          aria-labelledby="dropdownHoverButton"
+                        >
+                          <li>
+                            <a
+                              href="#"
+                              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Dashboard
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="#"
+                              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Settings
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="#"
+                              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Earnings
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="#"
+                              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              Sign out
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
                     </li>
                     <li>
-                      <Link
-                        href={`/about`}
-                        className={` cursor-pointer items-center border-b-2 align-middle transition duration-200 ease-in-out hover:text-blue-600 ${
-                          currentRoute === "/about"
-                            ? " border-orange-500"
-                            : "border-transparent"
-                        }`}
-                      >
-                        <span className="rounded">ABOUT ME</span>
-                      </Link>
+                      <input
+                        placeholder="search products here ..."
+                        className={`cursor-pointer items-center border-b-2 border-black bg-transparent align-middle placeholder-slate-300 transition duration-200 ease-in-out`}
+                      />
                     </li>
-                    <li>
-                      <Link
-                        href={`/contact`}
-                        className={` cursor-pointer items-center border-b-2 align-middle transition duration-200 ease-in-out hover:text-blue-600 ${
-                          currentRoute === "/contact"
-                            ? " border-orange-500"
-                            : "border-transparent"
-                        }`}
-                      >
-                        <span className="rounded">CONTACT</span>
-                      </Link>
+                    <li className="px-4  rounded-full border-2 border-red-500">
+                      Need Help? Call: 0716527700
                     </li>
-                    <li>
-                      <Link
-                        href={`/cv`}
-                        className={` cursor-pointer items-center border-b-2 align-middle transition duration-200 ease-in-out hover:text-blue-600 ${
-                          currentRoute === "/cv"
-                            ? " border-orange-500"
-                            : "border-transparent"
-                        }`}
-                      >
-                        <span className="rounded">CV</span>
-                      </Link>
-                    </li>
-
-                    {/* <li>
-                      <Link
-                        href="#"
-                        className="bg-primary-500 hover:bg-primary-700 focus:border-primary-700 focus:shadow-outline-indigo inline-block rounded-md border border-transparent bg-indigo-600 px-5 py-2 text-base font-semibold leading-6 text-white transition duration-150 ease-in-out focus:outline-none active:bg-indigo-700"
-                      >
-                        Résumé
-                      </Link>
-                    </li> */}
+                    <li className="">user</li>
+                    <li className="">cart</li>
                   </ul>
                 </nav>
               </div>
@@ -177,11 +185,8 @@ function Header() {
               setOpened(!opened);
             }}
             className="
-               absolute right-0 flex h-screen w-[60%] max-w-[20rem] flex-col  gap-4 overflow-y-auto bg-[#F7F6FB] p-4 pt-[5rem] text-end text-2xl font-semibold opacity-100 bg-blend-darken  dark:bg-slate-900 dark:text-white sm:text-3xl md:w-60 "
+               rdark:bg-slate-900 rdark:text-white absolute right-0 flex h-screen w-[60%]  max-w-[20rem] flex-col gap-4 overflow-y-auto bg-[#F7F6FB] p-4 pt-[5rem] text-end text-2xl font-semibold  opacity-100 bg-blend-darken sm:text-3xl md:w-60 "
           >
-            <div className="ml-auto w-fit items-center px-2 md:hidden">
-              <ThemeToogle place="sidebar-toogle" />
-            </div>
             <Link
               href={`/`}
               className={` ml-auto w-fit cursor-pointer items-center border-b-2 px-2 transition duration-200 ease-in-out hover:text-blue-600 ${
@@ -192,94 +197,6 @@ function Header() {
             >
               <span className="rounded">Home</span>
             </Link>
-
-            <Link
-              href={`/blogs`}
-              className={` ml-auto w-fit cursor-pointer items-center border-b-2 px-2 transition duration-200 ease-in-out hover:text-blue-600 ${
-                currentRoute?.substring(0, 6) === "/blogs"
-                  ? "  border-orange-500"
-                  : "border-transparent"
-              }`}
-            >
-              {/* <Image
-                width={20}
-                height={20}
-                className="mr-2 w-6 rounded-sm bg-[#F7F6FB]"
-                src="https://img.icons8.com/material-rounded/24/000000/dashboard-layout.png"
-                alt=""
-              /> */}
-              <span className="rounded">Blogs</span>
-            </Link>
-            <Link
-              href={`/projects`}
-              className={`ml-auto w-fit cursor-pointer items-center border-b-2 px-2 transition duration-200 ease-in-out hover:text-blue-600 ${
-                currentRoute === "/projects"
-                  ? " border-orange-500"
-                  : "border-transparent"
-              }`}
-            >
-              <span className="rounded">Projects</span>
-            </Link>
-            <Link
-              href={`/about`}
-              className={`ml-auto w-fit cursor-pointer items-center border-b-2 px-2 transition duration-200 ease-in-out hover:text-blue-600 ${
-                currentRoute === "/about"
-                  ? " border-orange-500"
-                  : "border-transparent"
-              }`}
-            >
-              <span className="rounded">About Me</span>
-            </Link>
-            <Link
-              href={`/contact`}
-              className={` ml-auto w-fit cursor-pointer items-center border-b-2 px-2 transition duration-200 ease-in-out hover:text-blue-600 ${
-                currentRoute === "/contact"
-                  ? "  border-orange-500"
-                  : "border-transparent"
-              }`}
-            >
-              <span className="rounded">Contact</span>
-            </Link>
-            <Link
-              href={`/cv`}
-              className={` ml-auto w-fit cursor-pointer items-center border-b-2 px-2 transition duration-200 ease-in-out hover:text-blue-600 ${
-                currentRoute === "/cv"
-                  ? "  border-orange-500"
-                  : "border-transparent"
-              }`}
-            >
-              <span className="rounded">Read CV</span>
-            </Link>
-            <a
-              href="https://raw.githubusercontent.com/Collins-Ruto/collins-ruto.github.io/main/collinsruto.pdf"
-              className=" ml-auto flex items-center rounded p-2 px-2"
-            >
-              Résumé
-              <Image
-                src="https://img.icons8.com/sf-regular-filled/48/000000/downloading-updates.png"
-                className="ml-1 w-7 dark:hidden"
-                height={100}
-                width={100}
-                alt=""
-              />
-              <Image
-                src="https://img.icons8.com/sf-regular-filled/48/FFFFFF/downloading-updates.png"
-                className="ml-1 hidden w-7 dark:block"
-                height={100}
-                width={100}
-                alt=""
-              />
-            </a>
-            {/* <Link
-              href={`/faq`}
-              className={` w-fit cursor-pointer ml-auto items-center border-b-2 px-2 transition duration-200 ease-in-out hover:text-blue-600 ${
-                currentRoute === "/faq"
-                  ? "  border-orange-500"
-                  : "border-transparent"
-              }`}
-            >
-              FAQs
-            </Link> */}
           </div>
         </div>
       </div>
