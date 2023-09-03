@@ -31,7 +31,7 @@ function Header() {
               <h1
                 className={`${logoFont.className} rdark:text-white ml-2 text-lg  `}
               >
-                RUTO 
+                RUTO
               </h1>
             </Link>
             <div
@@ -61,9 +61,7 @@ function Header() {
                 />
                 <span
                   className={`${logoFont.className} rdark:text-white ml-1 text-2xl md:ml-2`}
-                >
-                  
-                </span>
+                ></span>
               </Link>
               <div className="">
                 <nav className="rdark:text-gray-300 w-full text-gray-700">
@@ -85,7 +83,7 @@ function Header() {
                         id="dropdownHoverButton"
                         datadropdown-toggle="dropdownHover"
                         datadropdown-trigger="hover"
-                        className="font-bold  inline-flex items-center px-5 py-2.5 text-center text-black  focus:outline-none focus:ring-4 "
+                        className="inline-flex  items-center px-5 py-2.5 text-center font-bold text-black  focus:outline-none focus:ring-4 "
                         type="button"
                       >
                         SHOP BY CATEGORIES{" "}
@@ -154,11 +152,29 @@ function Header() {
                         className={`cursor-pointer items-center border-b-2 border-black bg-transparent align-middle placeholder-slate-300 transition duration-200 ease-in-out`}
                       />
                     </li>
-                    <li className="px-4  rounded-full border-2 border-red-500">
+                    <li className="rounded-full  border-2 border-red-500 px-4">
                       Need Help? Call: 0716527700
+                    </li> 
+                    <li className="">
+                      <Image
+                        width={408}
+                        height={128}
+                        src="/icons/user.png"
+                        alt="Collins"
+                        className="mr-2 h-8 w-8"
+                        loading="eager"
+                      />
                     </li>
-                    <li className="">user</li>
-                    <li className="">cart</li>
+                    <li className="">
+                      <Image
+                        width={408}
+                        height={128}
+                        src="/icons/cart.png"
+                        alt="Collins"
+                        className="mr-2 h-10 w-10"
+                        loading="eager"
+                      />
+                    </li>
                   </ul>
                 </nav>
               </div>

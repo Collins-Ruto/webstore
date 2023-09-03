@@ -58,7 +58,7 @@ const FeaturedCard = ({ product }: { product: Product }) => {
         </div>
       </Link>
     </div>
-  );
+  )
 };
 
 export default FeaturedCard;

@@ -105,7 +105,10 @@ model Product {
     old_price    String
     image_url    String
     serialno     String
-    category     String
+    warranty     String
+    brand        String
+    categories   String[]
+    tags         String[]
     created_at   String
 }
 model Category {

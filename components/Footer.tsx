@@ -8,9 +8,37 @@ function Footer() {
       <footer className=" pt-4 text-black">
         <div className="px-6 md:px-10">
           <ul className="flex justify-between">
-            <li className="items-center p-2 shadow-lg">Payment on Delivery</li>
-            <li className="items-center p-2 shadow-lg">Quality Assurance</li>
-            <li className="shadow.lg items-center p-2">
+            <li className="flex w-1/4 items-center gap-3 p-2 shadow-lg">
+              <Image
+                width={100}
+                height={100}
+                className="cover h-10 w-10 "
+                src="/icons/checkmark.png"
+                style={{ objectFit: "cover", justifyContent: "start" }}
+                alt="Product Cover Image"
+              />
+              Payment on Delivery
+            </li>
+            <li className="flex w-1/4 items-center gap-3 p-2 shadow-lg">
+              <Image
+                width={100}
+                height={100}
+                className="cover h-10 w-10 "
+                src="/icons/checkmark.png"
+                style={{ objectFit: "cover", justifyContent: "start" }}
+                alt="Product Cover Image"
+              />
+              Quality Assurance
+            </li>
+            <li className="flex w-1/4 items-center gap-3 p-2 shadow-lg">
+              <Image
+                width={100}
+                height={100}
+                className="cover h-10 w-10 "
+                src="/icons/checkmark.png"
+                style={{ objectFit: "cover", justifyContent: "start" }}
+                alt="Product Cover Image"
+              />
               Great after-sell service
             </li>
           </ul>
