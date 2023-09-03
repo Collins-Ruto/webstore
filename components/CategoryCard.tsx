@@ -17,7 +17,7 @@ const featuredProduct: Product = {
   created_at: "wewrfa",
 };
 
-const maps = [1, 2, 3, 4, 5];
+const maps = [1, 2, 3, 4];
 
 const CategoryCard = ({ category }: { category: Category }) => {
   return (
@@ -28,7 +28,7 @@ const CategoryCard = ({ category }: { category: Category }) => {
             <Image
               width={80}
               height={80}
-              className="mr-1 h-8 w-8  rounded-sm"
+              className="mr-1 h-9 w-9  rounded-sm"
               src={category.image_url}
               alt={category.title}
             />
@@ -37,9 +37,9 @@ const CategoryCard = ({ category }: { category: Category }) => {
           </div>
           <button
             type="button"
-            className="rdark:border-blue-500 rdark:text-blue-500 rdark:hover:bg-blue-500 rdark:hover:text-white rdark:focus:ring-blue-800 mr-2 inline-flex items-center rounded-lg border border-orange-600 p-2.5 text-center text-sm font-medium text-orange-600 hover:bg-orange-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300"
+            className="rdark:border-blue-500 font-semibold rdark:text-blue-500 rdark:hover:bg-blue-500 rdark:hover:text-white rdark:focus:ring-blue-800 mr-2 inline-flex items-center rounded-full border-2 border-orange-600 p-2.5 text-center text-sm text-orange-600 hover:bg-orange-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300"
           >
-            view more
+            View More
           </button>
         </div>
         <div className="flex gap-4">

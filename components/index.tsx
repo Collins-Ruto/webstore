@@ -1,6 +1,9 @@
 export { default as Header } from "./Header";
 export { default as Footer } from "./Footer";
+export { default as Editor } from "./Editor";
+export { default as Button } from "./Button";
 export { default as Contact } from "./Contact";
+export { default as Dropdown } from "./Dropdown";
 export { default as CarouselCard } from "./CarouselCard";
 export { default as ContactForm } from "./ContactForm";
 export { default as ProductCard } from "./ProductCard";

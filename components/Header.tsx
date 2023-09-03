@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import "~/styles/globals.css";
 import localFont from "@next/font/local";
+import Dropdown from "./Dropdown";
+// import { Dropdown } from "flowbite-react";
 
 const logoFont = localFont({
   src: "../assets/fonts/Saira_Stencil_One/SairaStencilOne-Regular.ttf",
@@ -78,81 +80,17 @@ function Header() {
                         <span className="rounded">H</span>
                       </Link> */}
                     </li>
-                    <li>
-                      <button
-                        id="dropdownHoverButton"
-                        datadropdown-toggle="dropdownHover"
-                        datadropdown-trigger="hover"
-                        className="inline-flex  items-center px-5 py-2.5 text-center font-bold text-black  focus:outline-none focus:ring-4 "
-                        type="button"
-                      >
-                        SHOP BY CATEGORIES{" "}
-                        <svg
-                          className="ml-2.5 h-2.5 w-2.5"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 10 6"
-                        >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="m1 1 4 4 4-4"
-                          />
-                        </svg>
-                      </button>
-                      <div
-                        id="dropdownHover"
-                        className="z-10 hidden w-44 divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700"
-                      >
-                        <ul
-                          className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                          aria-labelledby="dropdownHoverButton"
-                        >
-                          <li>
-                            <a
-                              href="#"
-                              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                            >
-                              Dashboard
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="#"
-                              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                            >
-                              Settings
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="#"
-                              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                            >
-                              Earnings
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="#"
-                              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                            >
-                              Sign out
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
+                    <li className="">
+                      <Dropdown  />
                     </li>
+                    
                     <li>
                       <input
                         placeholder="search products here ..."
                         className={`cursor-pointer items-center border-b-2 border-black bg-transparent align-middle placeholder-slate-300 transition duration-200 ease-in-out`}
                       />
                     </li>
-                    <li className="rounded-full  border-2 border-red-500 px-4">
+                    <li className="rounded-full  border-2 border-[#FF0000] px-4">
                       Need Help? Call: 0716527700
                     </li> 
                     <li className="">

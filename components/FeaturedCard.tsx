@@ -7,7 +7,7 @@ const FeaturedCard = ({ product }: { product: Product }) => {
   const date = new Date(product.created_at);
   return (
     <div className="rdark:bg-gray-900 flex h-full flex-col rounded-lg  bg-gray-50  shadow-md drop-shadow-sm hover:shadow-xl md:max-w-xl">
-      <div className="bg-black rounded-t-lg text-center p-4">
+      <div className="rounded-t-lg bg-black p-4 text-center">
         <h1 className="text-xl">Deal of the day</h1>
         <h2 className="text-xl font-bold text-gray-500">000d:00h:20m:20s</h2>
       </div>
@@ -38,27 +38,42 @@ const FeaturedCard = ({ product }: { product: Product }) => {
           {product.title}
         </h2>
         <div className="flex flex-row justify-around gap-2 font-bold">
-          <p className="text-gray-400 ">KSH {product.old_price}</p>
+          <p className="text-gray-400 line-through">KSH {product.old_price}</p>
           <p className="text-red-700">KSH {product.price}</p>
         </div>
-        <div className="flex flex-col mt-2 items-start justify-between font-bold">
+        <div className="mt-2 flex flex-col items-start justify-between font-bold">
           <button
             type="button"
-            className="rdark:bg-green-600 rdark:hover:bg-green-700  rdark:focus:ring-green-800 mb-2 mr-2 rounded-full bg-green-400 px-5 py-2.5 text-center text-sm text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300"
+            className="rdark:bg-green-600 rdark:hover:bg-green-700 rdark:focus:ring-green-800  mb-2 mr-2 flex rounded-full bg-green-400 px-5 py-2.5 text-center text-sm text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300"
           >
             Buy via WhatsApp
+            <Image
+              width={80}
+              height={80}
+              className="mr-1 h-5 w-5  rounded-sm"
+              src="/icons/greater-than.png"
+              alt=""
+            />
           </button>
 
           <button
             type="button"
-            className="rdark:border-gray-700 rdark:hover:bg-gray-700 rdark:focus:ring-gray-700 mb-2 mr-2 rounded-full bg-gray-800  px-5 py-2.5 text-sm text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300"
+            className="rdark:border-gray-700 rdark:hover:bg-gray-700 rdark:focus:ring-gray-700 mb-2 mr-2 flex rounded-full bg-gray-800  px-5 py-2.5 text-sm text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300"
           >
             Add to cart
+            <Image
+              width={80}
+              height={80}
+              className="mr-1 h-5 w-5  rounded-sm"
+              src="/icons/greater-than.png"
+              alt=""
+            />
+            
           </button>
         </div>
       </Link>
     </div>
-  )
+  );
 };
 
 export default FeaturedCard;

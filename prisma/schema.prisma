@@ -117,7 +117,6 @@ model Category {
     description  String
     slug         String   @unique
     image_url    String
-    created_at   String
 }
 
 type Comment {

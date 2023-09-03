@@ -74,7 +74,9 @@ export default async function ProductPage({
           <span className="text-xl font-bold">{product.title}</span>
           <span className="">{product.price}</span>
           <div className="flex flex-row justify-around gap-2 font-bold">
-            <span className="text-gray-400 ">KSH {product.old_price}</span>
+            <span className="text-gray-400 line-through">
+              KSH {product.old_price}
+            </span>
             <span className="text-red-700">KSH {product.price}</span>
           </div>
           <div className="flex">

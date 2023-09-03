@@ -15,6 +15,7 @@ import {
   ProductCard,
 } from ".";
 import { type Product } from "@prisma/client";
+import { categoriesexp } from "~/assets/data";
 
 const helloFont = localFont({
   src: "../assets/fonts/Open_Sans/static/OpenSans-ExtraBold.ttf",
@@ -36,28 +37,8 @@ const featuredProduct: Product = {
   old_price: "25,000",
   image_url: "/img/items/hbl-auto-1.jpeg",
   serialno: "wewrfa",
-  category: "wewrfa",
   created_at: "wewrfa",
 };
-
-const categoriesexp = [
-  {
-    id: "",
-    title: "New Arrivals",
-    description: "",
-    slug: "new-arrivals",
-    image_url: "/icons/new-arrivals.png",
-    created_at: "",
-  },
-  {
-    id: "",
-    title: "On Sale",
-    description: "",
-    slug: "new-arrivals",
-    image_url: "/icons/onsale.png",
-    created_at: "",
-  },
-];
 
 function MyHome() {
   return (
