@@ -75,12 +75,12 @@ export default async function ProductPage({
 
   return (
     <div className="w-screen p-4 text-black md:w-full">
-      <div className="flex-co justif mb-4 flex">
+      <div className="flex-co mx-auto  mb-4 flex justify-center">
         <div className="relative w-1/3">
           <Image
-            width={100}
+            width={400}
             height={600}
-            className="cover h-120 w-60 "
+            className="cover h-120 w-[24rem] "
             src={product.image_url}
             style={{ objectFit: "cover", justifyContent: "start" }}
             alt="Product Cover Image"
@@ -134,7 +134,7 @@ export default async function ProductPage({
                 href="https://twitter.com/ruto_collins_"
                 type="button"
                 aria-label="collins ruto twitter"
-                className="m-1 h-10 w-10 rounded-full border-2 border-white bg-black bg-opacity-20 uppercase leading-normal text-white transition-all duration-150 ease-in-out hover:h-10 hover:w-10 hover:border-none hover:border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-0"
+                className="m-1 h-10 w-10 rounded-full border-2 border-white bg-black bg-opacity-80 uppercase leading-normal text-white transition-all duration-150 ease-in-out hover:h-10 hover:w-10 hover:border-none hover:border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
@@ -151,7 +151,7 @@ export default async function ProductPage({
                 href="https://twitter.com/ruto_collins_"
                 type="button"
                 aria-label="collins ruto twitter"
-                className="m-1 h-10 w-10 rounded-full border-2 border-white bg-black bg-opacity-20 uppercase leading-normal text-white transition-all duration-150 ease-in-out hover:h-10 hover:w-10 hover:border-none hover:border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-0"
+                className="m-1 h-10 w-10 rounded-full border-2 border-white bg-black bg-opacity-80 uppercase leading-normal text-white transition-all duration-150 ease-in-out hover:h-10 hover:w-10 hover:border-none hover:border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
@@ -169,7 +169,7 @@ export default async function ProductPage({
                 href="https://instagram.com/learn.hq"
                 type="button"
                 aria-label="learnhq instagram"
-                className="m-1 h-10 w-10 rounded-full border-2 border-white bg-black bg-opacity-20 uppercase leading-normal text-white transition-all duration-150 ease-in-out hover:h-10 hover:w-10 hover:border-none hover:border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-0"
+                className="m-1 h-10 w-10 rounded-full border-2 border-white bg-black bg-opacity-80 uppercase leading-normal text-white transition-all duration-150 ease-in-out hover:h-10 hover:w-10 hover:border-none hover:border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
