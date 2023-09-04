@@ -211,3 +211,5 @@ export const socials = [
     link: "https://www.instagram.com/colins_ruto/",
   },
 ];
+
+export const contacts = []

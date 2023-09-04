@@ -62,7 +62,7 @@ function Footer() {
                   href="https://twitter.com/ruto_collins_"
                   type="button"
                   aria-label="collins ruto twitter"
-                  className="m-1 h-9 w-9 rounded-full border-2 border-white bg-black bg-opacity-20 uppercase leading-normal text-white transition-all duration-150 ease-in-out hover:h-10 hover:w-10 hover:border-none hover:border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-0"
+                  className="m-1 h-10 w-10 rounded-full border-2 border-white bg-black bg-opacity-20 uppercase leading-normal text-white transition-all duration-150 ease-in-out hover:h-10 hover:w-10 hover:border-none hover:border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-0"
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >
@@ -79,7 +79,7 @@ function Footer() {
                   href="https://twitter.com/ruto_collins_"
                   type="button"
                   aria-label="collins ruto twitter"
-                  className="m-1 h-9 w-9 rounded-full border-2 border-white bg-black bg-opacity-20 uppercase leading-normal text-white transition-all duration-150 ease-in-out hover:h-10 hover:w-10 hover:border-none hover:border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-0"
+                  className="m-1 h-10 w-10 rounded-full border-2 border-white bg-black bg-opacity-20 uppercase leading-normal text-white transition-all duration-150 ease-in-out hover:h-10 hover:w-10 hover:border-none hover:border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-0"
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >
@@ -97,7 +97,7 @@ function Footer() {
                   href="https://instagram.com/learn.hq"
                   type="button"
                   aria-label="learnhq instagram"
-                  className="m-1 h-9 w-9 rounded-full border-2 border-white bg-black bg-opacity-20 uppercase leading-normal text-white transition-all duration-150 ease-in-out hover:h-10 hover:w-10 hover:border-none hover:border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-0"
+                  className="m-1 h-10 w-10 rounded-full border-2 border-white bg-black bg-opacity-20 uppercase leading-normal text-white transition-all duration-150 ease-in-out hover:h-10 hover:w-10 hover:border-none hover:border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-0"
                   data-te-ripple-init
                   data-te-ripple-color="light"
                 >

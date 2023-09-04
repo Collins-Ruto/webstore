@@ -6,7 +6,7 @@ function Dropdown() {
   return (
     <div>
       <div className="flex w-full items-center justify-center">
-        <div className="group relative cursor-pointer ">
+        <div className="group inline-block relative cursor-pointer ">
           <div className="flex items-center justify-between">
             <a
               className="menu-hover text-lg  font-bold text-black lg:mx-4"
@@ -36,10 +36,10 @@ function Dropdown() {
               category.subcategories ? (
                 <div className="">
                   <div className="flex w-full">
-                    <div className="group relative w-full cursor-pointer ">
+                    <div className="group/item relative w-full cursor-pointer ">
                       <div className="flex items-center w-full justify-between">
                         <a
-                          className="menu-h text-lg pl-2 py-2 font-bold text-black "
+                          className="menu-hover text-lg pl-2 py-2 font-bold text-black "
                           // onClick=""
                         >
                           {category.title}
@@ -54,7 +54,8 @@ function Dropdown() {
                           />
                         </span>
                       </div>
-                      <div className="group-hover:visible left-0 invisible absolute z-50 flex w-full flex-col bg-gray-100 p-4 px-4 py-1 text-gray-800 shadow-xl">
+
+                      <div className="group-hover:visible left-56 invisible absolute z-50 flex w-full flex-col bg-gray-100 p-4 px-4 py-1 text-gray-800 shadow-xl">
                         {category.subcategories.map((category, index) => (
                           <div className="p-2" key={index}>
                             {category.title}

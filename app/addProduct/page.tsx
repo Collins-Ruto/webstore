@@ -1,22 +1,23 @@
 "use client";
 import React, { useState } from "react";
 import { Button, Editor, StatusMsg } from "~/components";
-import type { Subject, Task } from "@prisma/client";
+import type { Product } from "@prisma/client";
 import { api } from "@/utils/api";
-import { Subjects } from "~/types/types";
+// import { Subjects } from "~/types/types";
+import { categories } from "~/assets/data";
 
-interface IndexedTask extends Task {
-  [key: string]: string | Date | boolean | Subject;
+interface IndexedProduct extends Product {
+  [key: string]: string | Date | boolean | string[];
 }
 
-function CreateTask() {
-  const [task, setTask] = useState<Task | undefined>();
+function CreateProduct() {
+  const [product, setProduct] = useState<Product | undefined>();
   const [file, setFile] = useState<File>();
   const [submit, setSubmit] = useState(false);
   const [status, setStatus] = useState({ message: "", type: "" });
   const [validInput, setValidInput] = useState("");
 
-  const { data: streams, isLoading } = api.stream.getAll.useQuery();
+  // const { data: streams, isLoading } = api.stream.getAll.useQuery();
 
   const handleInput = (event: React.SyntheticEvent) => {
     setValidInput("");
@@ -24,42 +25,42 @@ function CreateTask() {
     const name = target.name;
     const value = target.value;
 
-    setTask((prevTask) => {
-      if (!prevTask) {
-        if (target.name === "subject") {
-          return {
-            subject: {
-              slug: value,
-              name:
-                Subjects.find((subject) => subject.slug === value)?.name || "",
-            },
-          } as unknown as Task;
-        }
+    setProduct((prevProduct) => {
+      if (!prevProduct) {
+        // if (target.name === "subject") {
+        //   return {
+        //     subject: {
+        //       slug: value,
+        //       name:
+        //         Subjects.find((subject) => subject.slug === value)?.name || "",
+        //     },
+        //   } as unknown as Product;
+        // }
         return {
           [name]: value,
-        } as unknown as Task; // or some default value if you have one
+        } as unknown as Product; // or some default value if you have one
       }
-      if (target.name === "subject") {
-        return {
-          ...prevTask,
-          [name]: value,
-          subject: {
-            slug: value,
-            name:
-              Subjects.find((subject) => subject.slug === value)?.name || "",
-          },
-        };
-      }
+      // if (target.name === "subject") {
+      //   return {
+      //     ...prevProduct,
+      //     [name]: value,
+      //     subject: {
+      //       slug: value,
+      //       name:
+      //         Subjects.find((subject) => subject.slug === value)?.name || "",
+      //     },
+      //   };
+      // }
 
-      const updatedTask = {
-        ...prevTask,
+      const updatedProduct = {
+        ...prevProduct,
         [name]: value,
         posted: new Date().toDateString(),
       };
 
-      console.log(updatedTask);
+      console.log(updatedProduct);
 
-      return updatedTask;
+      return updatedProduct;
     });
   };
 
@@ -72,11 +73,11 @@ function CreateTask() {
       "streamId",
       "teacherId",
     ];
-    const inputTask = task as IndexedTask;
+    const inputProduct = product as IndexedProduct;
     let message = "Please fill: ";
     if (action === "clear") {
-      setTask(() => {
-        let newInput = {} as unknown as Task;
+      setProduct(() => {
+        let newInput = {} as unknown as Product;
         fields.forEach((field) => {
           newInput = { ...newInput, [field]: "" };
         });
@@ -84,7 +85,7 @@ function CreateTask() {
       });
     }
     fields.forEach((field) => {
-      if (inputTask?.[field] === "" || inputTask?.[field] === undefined) {
+      if (inputProduct?.[field] === "" || inputProduct?.[field] === undefined) {
         message += `${field}, `;
         setValidInput(message);
       }
@@ -99,20 +100,20 @@ function CreateTask() {
   const handleQuillChange = (content: string) => {
     const jsonContent: string = JSON.stringify(content);
 
-    setTask((prevTask) => {
-      if (!prevTask) {
+    setProduct((prevProduct) => {
+      if (!prevProduct) {
         return {
           description: jsonContent,
-        } as unknown as Task; // or some default value if you have one
+        } as unknown as Product; // or some default value if you have one
       }
-      const updatedTask = {
-        ...prevTask,
+      const updatedProduct = {
+        ...prevProduct,
         description: jsonContent,
       };
 
-      console.log(updatedTask);
+      console.log(updatedProduct);
 
-      return updatedTask;
+      return updatedProduct;
     });
   };
 
@@ -123,13 +124,13 @@ function CreateTask() {
     setFile(file);
   };
 
-  console.log("task", task);
+  console.log("product", product);
 
-  const addTaskMutation = api.task.addTask.useMutation();
+  const addProductMutation = api.product.addProduct.useMutation();
 
   console.log("file", file);
 
-  const fileSubmit = async (): Promise<Task> => {
+  const fileSubmit = async (): Promise<Product> => {
     const formdata = new FormData();
 
     formdata.append("file", file as Blob);
@@ -147,19 +148,19 @@ function CreateTask() {
       }
     );
 
-    const json = (await res.json()) as Task;
+    const json = (await res.json()) as { secure_url: string };
     console.log(json);
     console.log(JSON.stringify(json.secure_url));
 
-    const updatedTask = {
-      ...task,
-      asset_id: json.asset_id ?? "",
-      file: json.original_filename ?? "",
-      original_filename: json.original_filename ?? "",
-      secure_url: json.secure_url ?? "",
-    } as Task;
+    const updatedProduct = {
+      ...product,
+      // asset_id: json.asset_id ?? "",
+      // file: json.original_filename ?? "",
+      // original_filename: json.original_filename ?? "",
+      image_url: json.secure_url ?? "",
+    } as Product;
 
-    return updatedTask;
+    return updatedProduct;
   };
 
   async function handleSubmit() {
@@ -168,26 +169,28 @@ function CreateTask() {
     }
     setSubmit(true);
 
-    const newTask = {
-      ...task,
+    const newProduct = {
+      ...product,
       asset_id: "",
       file: "",
       original_filename: "",
       secure_url: "",
-    } as Task;
+    } as Product;
 
-    const fileTask = file ? await fileSubmit() : newTask;
+    const fileProduct = file ? await fileSubmit() : newProduct;
 
-    console.log("fileTask task", fileTask);
-    console.log("new task", newTask);
+    console.log("fileProduct product", fileProduct);
+    console.log("new product", newProduct);
 
     try {
-      addTaskMutation.mutate(fileTask, {
+      addProductMutation.mutate(fileProduct, {
         onSuccess: () => {
           setSubmit(false);
           setStatus({
             type: "success",
-            message: `succesfully added ${fileTask?.name ?? ""} as a task`,
+            message: `succesfully added ${
+              fileProduct?.title ?? ""
+            } as a product`,
           });
           setTimeout(() => {
             inputValidate("clear");
@@ -203,68 +206,150 @@ function CreateTask() {
   return (
     <div>
       {<StatusMsg status={status} />}
-      <div className="p-2 text-2xl font-semibold md:p-4">
-        <h3>Add Tasks</h3>
+      <div className="p-2 text-2xl font-semibold text-black md:p-4">
+        <h3>Add Products</h3>
       </div>
       {/* {isLoading && <Loader />} */}
-      <div className="m-4 rounded-xl bg-[#F7F6FB] p-4 md:p-6">
+      <div className="m-4 rounded-xl bg-[#F7F6FB] p-4 text-black md:p-6">
         <form>
           <div className="flex grid-cols-3 flex-col gap-2 gap-y-4 md:grid md:gap-y-8">
             <div>
-              <div>
-                <label>
-                  Task Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  onChange={(e) => {
-                    handleInput(e);
-                  }}
-                  value={task?.name}
-                  className="focus:shadow-outline w-full appearance-none rounded border px-3 py-3 leading-tight text-gray-700 shadow focus:outline-none"
-                  type="text"
-                  placeholder="eg. Assignmets 1"
-                  name="name"
-                />
-              </div>
+              <label>
+                Product Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                onChange={(e) => {
+                  handleInput(e);
+                }}
+                value={product?.title}
+                className="focus:shadow-outline w-full appearance-none rounded border px-3 py-3 leading-tight text-gray-700 shadow focus:outline-none"
+                type="text"
+                placeholder="eg. Assignmets 1"
+                name="title"
+              />
             </div>
             <div>
-              <div>
-                <label>
-                  Subject ID <span className="text-red-500">*</span>
-                </label>
-                <input
-                  onChange={(e) => {
-                    handleInput(e);
-                  }}
-                  value={task?.subject?.slug}
-                  className="focus:shadow-outline w-full appearance-none rounded border px-3 py-3 leading-tight text-gray-700 shadow focus:outline-none"
-                  type="text"
-                  placeholder="eg. geo"
-                  name="subject"
-                />
-              </div>
+              <label>
+                Old Price <span className="text-red-500">*</span>
+              </label>
+              <input
+                onChange={(e) => {
+                  handleInput(e);
+                }}
+                value={product?.old_price}
+                className="focus:shadow-outline w-full appearance-none rounded border px-3 py-3 leading-tight text-gray-700 shadow focus:outline-none"
+                type="text"
+                placeholder="eg. 12,000"
+                name="old_price"
+              />
             </div>
+            <div>
+              <label>
+                Current price <span className="text-red-500">*</span>
+              </label>
+              <input
+                onChange={(e) => {
+                  handleInput(e);
+                }}
+                value={product?.price}
+                className="focus:shadow-outline w-full appearance-none rounded border px-3 py-3 leading-tight text-gray-700 shadow focus:outline-none"
+                type="text"
+                placeholder="eg. 10,000"
+                name="price"
+              />
+            </div>
+            <div>
+              <label>
+                Serial Number <span className="text-red-500">*</span>
+              </label>
+              <input
+                onChange={(e) => {
+                  handleInput(e);
+                }}
+                value={product?.serialno}
+                className="focus:shadow-outline w-full appearance-none rounded border px-3 py-3 leading-tight text-gray-700 shadow focus:outline-none"
+                type="text"
+                placeholder="eg. 123H393U89DH923"
+                name="serialno"
+              />
+            </div>
+            <div>
+              <label>
+                Warrany in years <span className="text-red-500">*</span>
+              </label>
+              <input
+                onChange={(e) => {
+                  handleInput(e);
+                }}
+                value={product?.warranty}
+                className="focus:shadow-outline w-full appearance-none rounded border px-3 py-3 leading-tight text-gray-700 shadow focus:outline-none"
+                type="text"
+                placeholder="eg. 2"
+                name="warranty"
+              />
+            </div>
+            <div>
+              <label>
+                Product Brand <span className="text-red-500">*</span>
+              </label>
+              <input
+                onChange={(e) => {
+                  handleInput(e);
+                }}
+                value={product?.brand}
+                className="focus:shadow-outline w-full appearance-none rounded border px-3 py-3 leading-tight text-gray-700 shadow focus:outline-none"
+                type="text"
+                placeholder="eg. Sony"
+                name="brand"
+              />
+            </div>
+            <div>
+              <label>
+                Product Tags <span className="text-red-500">*</span>
+              </label>
+              <input
+                onChange={(e) => {
+                  handleInput(e);
+                }}
+                value={product?.tags}
+                className="focus:shadow-outline w-full appearance-none rounded border px-3 py-3 leading-tight text-gray-700 shadow focus:outline-none"
+                type="text"
+                placeholder="eg. speaker"
+                name="tags"
+              />
+            </div>
+
             <div className="relative inline-block items-center">
               <label>
-                Stream ID<span className="text-red-500">*</span>
+                Category <span className="text-red-500">*</span>
               </label>
               <div className="flex cursor-pointer items-center">
                 <select
                   onChange={(e) => {
                     handleInput(e);
                   }}
-                  value={task?.streamId}
+                  name="category"
+                  value={product?.categories}
                   className="focus:shadow-outline block w-full appearance-none rounded border border-gray-400 bg-white px-4 py-3 pr-8 leading-tight shadow hover:border-gray-500 focus:outline-none"
-                  name="streamId"
                 >
-                  <option>Select Stream</option>
-                  {streams?.map((stream, index) => {
-                    return (
-                      <option key={index} value={stream.slug}>
-                        {stream.name}
+                  <option>Select Category</option>
+                  {categories.map((category, index) =>
+                    category.subcategories ? (
+                      category.subcategories.map((subcategory, index2) => (
+                        <option
+                          value={[category.slug, subcategory.slug]}
+                          className=""
+                          key={index2}
+                        >
+                          {category.title + " - " + subcategory.title}
+                        </option>
+                      ))
+                    ) : (
+                      <option value={category.slug} key={index}>
+                        {category.title}
                       </option>
-                    );
-                  })}
+                    )
+                  )}
                 </select>
                 <div className="pointer-events-none absolute right-0 flex items-center px-2 text-gray-700">
                   <svg
@@ -277,7 +362,8 @@ function CreateTask() {
                 </div>
               </div>
             </div>
-            <div>
+
+            {/* <div>
               <label>
                 Teacher Username <span className="text-red-500">*</span>
               </label>
@@ -285,31 +371,31 @@ function CreateTask() {
                 onChange={(e) => {
                   handleInput(e);
                 }}
-                value={task?.teacherId}
+                value={product?.teacherId}
                 className="focus:shadow-outline w-full appearance-none rounded border px-3 py-3 leading-tight text-gray-700 shadow focus:outline-none"
                 type="text"
                 placeholder="eg. 456erick"
                 name="teacherId"
               />
-            </div>
-            <div>
+            </div> */}
+            {/* <div>
               <label>
-                Due <span className="text-red-500">*</span>
+                Price <span className="text-red-500">*</span>
               </label>
               <input
                 onChange={(e) => {
                   handleInput(e);
                 }}
-                value={task?.due}
+                value={product?.price}
                 className="focus:shadow-outline w-full appearance-none rounded border px-3 py-3 leading-tight text-gray-700 shadow focus:outline-none"
                 type="date"
-                name="due"
+                name="price"
               />
-            </div>
+            </div> */}
           </div>
           <div className="py-4 md:pt-8">
             <label>
-              Task Description <span className="text-red-500">*</span>
+              Product Description <span className="text-red-500">*</span>
             </label>
             <Editor handleQuillChange={handleQuillChange} />
           </div>
@@ -356,4 +442,4 @@ function CreateTask() {
   );
 }
 
-export default CreateTask;
+export default CreateProduct;

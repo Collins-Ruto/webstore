@@ -37,7 +37,11 @@ const featuredProduct: Product = {
   old_price: "25,000",
   image_url: "/img/items/hbl-auto-1.jpeg",
   serialno: "wewrfa",
+  categories: ["wewrfa"],
   created_at: "wewrfa",
+  warranty: "2",
+  brand: "sony",
+  tags: ["wewrfa"],
 };
 
 function MyHome() {
@@ -45,7 +49,7 @@ function MyHome() {
     <div className={``}>
       <div className="">
         <div className="">
-          <section className="container mx-auto flex h-full items-center gap-4">
+          <section className=" flex h-full items-center gap-4">
             <div className="md:2/4 mx-2 grow px-2">
               <CarouselCard />
             </div>

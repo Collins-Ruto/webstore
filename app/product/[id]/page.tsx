@@ -6,6 +6,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { ProductCard } from "~/components";
 
+const product: Product = {
+  id: "wewrfa",
+  title: "Executive Casio Edifice Chronograph Watch",
+  description:
+    "Day, date, and time calendar watch Water-resistant Perfect chronographs Anti-fade Strong metallic straps",
+  slug: "wewrfa",
+  price: "14,000",
+  old_price: "21,000",
+  image_url: "/img/items/hbl-auto-1.jpeg",
+  serialno: "wewrfa",
+  categories: ["wewrfa"],
+  created_at: "wewrfa",
+  warranty: "2",
+  brand: "sony",
+  tags: ["wewrfa"],
+};
+
+const relatedProducts = [1, 2, 3, 4];
+
 export async function generateMetadata(
   {
     params: { id },
@@ -19,8 +38,8 @@ export async function generateMetadata(
     prisma: prisma,
   });
 
-  const data = await caller.product.getById(id || "621dd16f2eece6ce9587cb0d");
-  const product = data[0] as Product;
+  // const data = await caller.product.getById(id || "621dd16f2eece6ce9587cb0d");
+  // const product = data[0] as Product;
 
   const previousImages = (await parent)?.openGraph?.images || [];
 
@@ -50,18 +69,18 @@ export default async function ProductPage({
     prisma: prisma,
   });
 
-  const data = await caller.product.getById(id || "621dd16f2eece6ce9587cb0d");
-  const product = data[0] as Product;
-  console.log("product", data);
+  // const data = await caller.product.getById(id || "621dd16f2eece6ce9587cb0d");
+  // const product = data[0] as Product;
+  // console.log("product", data);
 
   return (
-    <div className="w-screen p-4 md:w-full">
-      <div className="mb-4  flex flex-col">
-        <div className="relative">
+    <div className="w-screen p-4 text-black md:w-full">
+      <div className="flex-co justif mb-4 flex">
+        <div className="relative w-1/3">
           <Image
-            width={400}
+            width={100}
             height={600}
-            className="cover h-40 w-full "
+            className="cover h-120 w-60 "
             src={product.image_url}
             style={{ objectFit: "cover", justifyContent: "start" }}
             alt="Product Cover Image"
@@ -70,9 +89,9 @@ export default async function ProductPage({
             -33%
           </span>
         </div>
-        <div className="">
+        <div className="flex w-1/3 flex-col gap-4">
           <span className="text-xl font-bold">{product.title}</span>
-          <span className="">{product.price}</span>
+          <span className="text-red-700">{product.price}</span>
           <div className="flex flex-row justify-around gap-2 font-bold">
             <span className="text-gray-400 line-through">
               KSH {product.old_price}
@@ -104,7 +123,7 @@ export default async function ProductPage({
 
           <span className="">{product.description}</span>
           <span className="">{product.warranty} Year Waranty</span>
-          <span className="rounded-lg  border-2 border-red-500 px-4">
+          <span className="rounded-lg  border-2 border-red-500 px-4 text-black">
             Call to order: 0716527700
           </span>
           <span className="">{product.brand}</span>
@@ -115,7 +134,7 @@ export default async function ProductPage({
                 href="https://twitter.com/ruto_collins_"
                 type="button"
                 aria-label="collins ruto twitter"
-                className="m-1 h-9 w-9 rounded-full border-2 border-white bg-black bg-opacity-20 uppercase leading-normal text-white transition-all duration-150 ease-in-out hover:h-10 hover:w-10 hover:border-none hover:border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-0"
+                className="m-1 h-10 w-10 rounded-full border-2 border-white bg-black bg-opacity-20 uppercase leading-normal text-white transition-all duration-150 ease-in-out hover:h-10 hover:w-10 hover:border-none hover:border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
@@ -132,7 +151,7 @@ export default async function ProductPage({
                 href="https://twitter.com/ruto_collins_"
                 type="button"
                 aria-label="collins ruto twitter"
-                className="m-1 h-9 w-9 rounded-full border-2 border-white bg-black bg-opacity-20 uppercase leading-normal text-white transition-all duration-150 ease-in-out hover:h-10 hover:w-10 hover:border-none hover:border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-0"
+                className="m-1 h-10 w-10 rounded-full border-2 border-white bg-black bg-opacity-20 uppercase leading-normal text-white transition-all duration-150 ease-in-out hover:h-10 hover:w-10 hover:border-none hover:border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
@@ -150,7 +169,7 @@ export default async function ProductPage({
                 href="https://instagram.com/learn.hq"
                 type="button"
                 aria-label="learnhq instagram"
-                className="m-1 h-9 w-9 rounded-full border-2 border-white bg-black bg-opacity-20 uppercase leading-normal text-white transition-all duration-150 ease-in-out hover:h-10 hover:w-10 hover:border-none hover:border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-0"
+                className="m-1 h-10 w-10 rounded-full border-2 border-white bg-black bg-opacity-20 uppercase leading-normal text-white transition-all duration-150 ease-in-out hover:h-10 hover:w-10 hover:border-none hover:border-gray-500 hover:bg-pink-600 focus:outline-none focus:ring-0"
                 data-te-ripple-init
                 data-te-ripple-color="light"
               >
@@ -170,31 +189,12 @@ export default async function ProductPage({
       <div className=""></div>
       <div className="">
         <span className="">You may also like...</span>
-        <div className="">
-          {relatedProducts.map((product, index) => (
+        <div className="flex gap-4">
+          {relatedProducts.map((_, index) => (
             <div className="" key={index}>
               <ProductCard product={product} />
             </div>
           ))}
-        </div>
-      </div>
-      <div className="">
-        <div className="mx-auto flex flex-col lg:w-[70%]">
-          <div className="relative h-0 overflow-hidden pb-[56.25%]">
-            <iframe
-              className="absolute left-0 top-0 h-full w-full"
-              width="560"
-              height="315"
-              src={videoUrl}
-              title={product.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-          <span className="mt-2 text-xl text-blue-600">{product.title}</span>
-          <span className="mt-2 text-xl text-gray-700">
-            {product.description}
-          </span>
         </div>
       </div>
     </div>
