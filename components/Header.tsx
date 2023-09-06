@@ -16,6 +16,7 @@ const logoFont = localFont({
 function Header() {
   const [opened, setOpened] = useState(false);
   const currentRoute = usePathname();
+  const cartcount = "3"
 
   return (
     <div className="  rdark:bg-slate-900 sticky top-0 z-40 bg-gray-100 py-2 text-black bg-blend-darken shadow-lg">
@@ -103,7 +104,7 @@ function Header() {
                         loading="eager"
                       />
                     </li>
-                    <li className="">
+                    <li className="relative">
                       <Image
                         width={408}
                         height={128}
@@ -112,6 +113,7 @@ function Header() {
                         className="mr-2 h-10 w-10"
                         loading="eager"
                       />
+                      <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-1 right-0 dark:border-gray-900">{ cartcount}</div>
                     </li>
                   </ul>
                 </nav>
