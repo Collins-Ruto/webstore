@@ -2,17 +2,12 @@ import Image from "next/image";
 import "flowbite";
 import Link from "next/link";
 import React from "react";
-import { tools1, tools2 } from "~/assets/homedata";
 import "~/styles/themetoogle.css";
-import pinnedProjects from "~/assets/pinnedProjects2.json";
 import localFont from "@next/font/local";
 import {
   CategoryCard,
-  Contact,
   FeaturedCard,
   CarouselCard,
-  PinnedCard,
-  ProductCard,
 } from ".";
 import { type Product } from "@prisma/client";
 import { categoriesexp } from "~/assets/data";
@@ -37,7 +32,7 @@ const featuredProduct: Product = {
   old_price: "25,000",
   image_url: "/img/items/hbl-auto-1.jpeg",
   serialno: "wewrfa",
-  categories: ["wewrfa"],
+  category: "wewrfa",
   created_at: "wewrfa",
   warranty: "2",
   brand: "sony",

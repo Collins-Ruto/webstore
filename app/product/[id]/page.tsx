@@ -16,7 +16,7 @@ const product: Product = {
   old_price: "21,000",
   image_url: "/img/items/hbl-auto-1.jpeg",
   serialno: "wewrfa",
-  categories: ["wewrfa"],
+  category: "wewrfa",
   created_at: "wewrfa",
   warranty: "2",
   brand: "sony",
@@ -70,6 +70,7 @@ export default async function ProductPage({
   });
 
   // const data = await caller.product.getById(id || "621dd16f2eece6ce9587cb0d");
+  // const related = await caller.product.getById(id || "621dd16f2eece6ce9587cb0d");
   // const product = data[0] as Product;
   // console.log("product", data);
 

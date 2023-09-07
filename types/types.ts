@@ -25,3 +25,16 @@ export type Subject = {
   slug: string
 }
 
+
+export type CategoryList = {
+    title :       string
+    description : string
+    slug        : string  
+    subcategories :   SubCategory[]
+}
+
+type SubCategory = {
+    title   :     string
+    description:  string
+    slug       :  string  
+}

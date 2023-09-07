@@ -107,7 +107,7 @@ model Product {
     serialno     String
     warranty     String
     brand        String
-    categories   String[]
+    category   String
     tags         String[]
     created_at   String
 }
@@ -124,3 +124,4 @@ type Comment {
     content     String
     author      String
 }
+

@@ -1,4 +1,6 @@
-export const categories = [
+import { type CategoryList } from "~/types/types";
+
+export const categories: CategoryList[] = [
   {
     title: "Watches",
     description: "",
@@ -37,11 +39,13 @@ export const categories = [
     title: "CCTV",
     description: "",
     slug: "cctv",
+    subcategories: [],
   },
   {
     title: "Laptops",
     description: "",
     slug: "laptops",
+    subcategories: [],
   },
   {
     title: "For Men",
@@ -93,6 +97,11 @@ export const categories = [
     slug: "fashion",
     subcategories: [
       {
+        title: "Belts",
+        description: "",
+        slug: "belts",
+      },
+      {
         title: "Designer Perfumes",
         description: "",
         slug: "designer-perfumes",
@@ -113,6 +122,7 @@ export const categories = [
     title: "For Women",
     description: "",
     slug: "for-women",
+    subcategories: [],
   },
   {
     title: "Accessories",
@@ -140,6 +150,7 @@ export const categories = [
     title: "Gifts",
     description: "",
     slug: "gifts",
+    subcategories: [],
   },
 ];
 
@@ -168,7 +179,8 @@ export const categoriesexp = [
   {
     id: "",
     title: "CCTV & Security Systems",
-    description: "Keep your property secure with our CCTV and security systems.",
+    description:
+      "Keep your property secure with our CCTV and security systems.",
     slug: "cctv-security-systems",
     image_url: "/icons/cctv-security.png",
   },
@@ -187,7 +199,6 @@ export const categoriesexp = [
     image_url: "/icons/laptops-desktops.png",
   },
 ];
-
 
 export const socials = [
   {
@@ -212,4 +223,4 @@ export const socials = [
   },
 ];
 
-export const contacts = []
+export const contacts = [];

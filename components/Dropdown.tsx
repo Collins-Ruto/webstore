@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { categories } from "~/assets/data";
 
@@ -6,7 +7,7 @@ function Dropdown() {
   return (
     <div>
       <div className="flex w-full items-center justify-center">
-        <div className="group inline-block relative cursor-pointer ">
+        <div className="group relative inline-block cursor-pointer ">
           <div className="flex items-center justify-between">
             <a
               className="menu-hover text-lg  font-bold text-black lg:mx-4"
@@ -37,9 +38,12 @@ function Dropdown() {
                 <div className="">
                   <div className="flex w-full">
                     <div className="group/item relative w-full cursor-pointer ">
-                      <div className="flex hover:bg-gray-300 rounded-md items-center w-full justify-between">
+                      <Link
+                        href={`/category/${category.slug}`}
+                        className="flex w-full items-center justify-between rounded-md hover:bg-gray-300"
+                      >
                         <a
-                          className="menu-hover  text-lg pl-2 py-2 font-bold text-black "
+                          className="menu-hover  py-2 pl-2 text-lg font-bold text-black "
                           // onClick=""
                         >
                           {category.title}
@@ -53,11 +57,14 @@ function Dropdown() {
                             alt=""
                           />
                         </span>
-                      </div>
+                      </Link>
 
-                      <div className="group-hover/item:visible left-48 -top-2 invisible absolute z-50 flex w-full flex-col bg-gray-100 p-4 px-4 py-1 text-gray-800 shadow-xl">
+                      <div className="invisible absolute -top-2 left-48 z-50 flex w-full flex-col bg-gray-100 p-4 px-4 py-1 text-gray-800 shadow-xl group-hover/item:visible">
                         {category.subcategories.map((category, index) => (
-                          <div className="p-2 hover:bg-gray-300 rounded-md" key={index}>
+                          <div
+                            className="rounded-md p-2 hover:bg-gray-300"
+                            key={index}
+                          >
                             {category.title}
                           </div>
                         ))}
@@ -66,7 +73,7 @@ function Dropdown() {
                   </div>
                 </div>
               ) : (
-                <div className="p-2 hover:bg-gray-300 rounded-md" key={index}>
+                <div className="rounded-md p-2 hover:bg-gray-300" key={index}>
                   {category.title}
                 </div>
               )

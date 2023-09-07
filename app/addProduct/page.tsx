@@ -329,7 +329,7 @@ function CreateProduct() {
                     handleInput(e);
                   }}
                   name="category"
-                  value={product?.categories}
+                  value={product?.category}
                   className="focus:shadow-outline block w-full appearance-none rounded border border-gray-400 bg-white px-4 py-3 pr-8 leading-tight shadow hover:border-gray-500 focus:outline-none"
                 >
                   <option>Select Category</option>
@@ -337,7 +337,7 @@ function CreateProduct() {
                     category.subcategories ? (
                       category.subcategories.map((subcategory, index2) => (
                         <option
-                          value={[category.slug, subcategory.slug]}
+                          value={subcategory.slug}
                           className=""
                           key={index2}
                         >

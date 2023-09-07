@@ -24,20 +24,35 @@ export const productRouter = createTRPCRouter({
     });
   }),
 
-  // getAllStream: protectedProcedure.input(z.string()).query(({ ctx, input }) => {
-  //     return ctx.prisma.product.findMany({
-  //         where: {
-  //             streamId: input
-  //         },
-  //         include: {
-  //             stream: true,
-  //             teacher: true
-  //         },
-  //         orderBy: {
-  //             createdAt: 'desc'
-  //         }
-  //     });
-  // }),
+  getAllCategory: protectedProcedure
+    .input(z.array(z.string()))
+    .query(({ ctx, input }) => {
+      return ctx.prisma.product.findMany({
+        where: {
+          OR: [
+            { category: { contains: input[0] } },
+            { category: { contains: input[1] } },
+          ],
+        },
+        orderBy: {
+          created_at: "desc",
+        },
+      });
+    }),
+
+  getAllCategories: protectedProcedure
+    .input(z.string())
+    .query(({ ctx, input }) => {
+      return ctx.prisma.product.findMany({
+        where: {
+          category: { contains: input[1] },
+        },
+        orderBy: {
+          created_at: "desc",
+        },
+      });
+    }),
+
   // getAllTeacher: protectedProcedure.input(z.string()).query(({ ctx, input }) => {
   //     return ctx.prisma.product.findMany({
   //         where: {
@@ -79,7 +94,7 @@ export const productRouter = createTRPCRouter({
         serialno: z.string(),
         warranty: z.string(),
         brand: z.string(),
-        categories: z.array(z.string()),
+        category: z.string(),
         tags: z.array(z.string()),
         created_at: z.string(),
       })
